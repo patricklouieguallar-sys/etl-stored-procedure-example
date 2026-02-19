@@ -1,9 +1,9 @@
 # SQL Server ETL Pipeline – Movies & YouTube Data
 
 ## 📌 Overview
-This project demonstrates an end-to-end ETL process using **SQL Server** to load structured CSV data into staging tables using **BULK INSERT** and stored procedures.
+This project showcases an end-to-end ETL pipeline built in **SQL Server** to load structured CSV datasets into staging tables using **BULK INSERT** and T-SQL stored procedures.
 
-The pipeline focuses on performance, logging, and error handling—common requirements in real-world data engineering and BI environments.
+The solution emphasizes performance, execution monitoring, and defensive error handling—patterns commonly used in production data warehousing and BI environments.
 
 ---
 
@@ -16,27 +16,25 @@ The pipeline focuses on performance, logging, and error handling—common requir
 
 ---
 
-## 📂 Dataset
+## 📂 Datasets
 - Movies metadata dataset
-- YouTube Trending Videos dataset (US)
+- YouTube Trending Videos dataset (US region)
 
-> Only sample data is included in this repository. Full datasets can be sourced publicly.
+> Only sample data is included in this repository. Full datasets are publicly available and can be sourced independently.
 
 ---
 
 ## 🧱 Database Objects
+
 ### Tables
-- `aMovies`
-- `aYouTubeTrendingVideos`
+- `aMovies` – Stores movie metadata including budget, revenue, genres, and ratings
+- `aYouTubeTrendingVideos` – Stores trending YouTube video metrics and metadata
 
 ### Stored Procedure
 - `testdb.load_testdb`
-  - Truncates staging tables
-  - Loads CSV data using BULK INSERT
-  - Tracks execution time
-  - Handles runtime errors gracefully
+  - Truncates staging tables prior to load
+  - Ingests CSV files using high-performance BULK INSERT
+  - Captures execution start and end times
+  - Implements TRY/CATCH error handling for load failures
 
 ---
-
-## 🚀 How to Run
-1. Create the tables using:
